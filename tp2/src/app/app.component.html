@@ -1,49 +1,115 @@
 <div class="container">
-<h1>Installation de Bootstrap dans Angular</h1>
-<div class="card">
-  <div class="card-header">
-    En-tete
-  </div>
-  <div class="card-body">
-    <h5 class="card-title">Titre</h5>
-    <p class="card-text">Introduction à du contenu supplémentaire.</p>
-    <p>Welcome to {{title}}</p>
-    <h1 [innerText]="title"></h1>
-    <h2>Example 1</h2>
-    <button [disabled]="isDisabled">I am disabled</button>
-    <h2>Example 2</h2>
-    <button (click)="clickMe()">Click Me</button>
-    <p>You have clicked {{clickCount}}</p>
-    <h2>Example 3</h2>
-    <input type="text" [(ngModel)]="name">
-    <p>You have entered {{name}}</p>
-    <button (click)="clearName()">Clear</button>
-    <h1>Simple Example of ngIf</h1>
-    <div class="row">
-      Show <input type="checkbox" [(ngModel)]="showMe" />
+  <h1>Installation de Bootstrap dans Angular</h1>
+
+  <div class="card">
+    <div class="card-header">
+      En-tete
     </div>
-    <h1>ngIf</h1>
-    <p *ngIf="showMe">ShowMe is checked</p>
-    <p *ngIf="!showMe">
-      ShowMe is unchecked
-    </p>
-    <h1>ngIf Else</h1>
-    <p *ngIf="showMe; else elseBlock1">ShowMe is checked</p>
-    <ng-template #elseBlock1>
-      <p>ShowMe is unchecked Using elseBlock</p>
-    </ng-template>
-    <h1>ngIf then else</h1>
-    <p *ngIf="showMe; then thenBlock2 else elseBlock2">This is not rendered</p>
-    <ng-template #thenBlock2>
-      <p>ShowMe is checked Using thenblock</p>
-    </ng-template>
-    <ng-template #elseBlock2>
-      <p>ShowMe is unchecked Using elseBlock</p>
-    </ng-template>
-    <h1>using hidden</h1>
-    <p [hidden]="showMe">Content to render, when the condition is true using hidden property binding</p>
-    <p [hidden]="!showMe">Content to render, when the condition is false. using hidden property binding</p>
-    <a class="btn btn-primary" href="#">Aller à</a>
+    <div class="card-body">
+      <h5 class="card-title">Titre</h5>
+      <p class="card-text">Introduction à du contenu supplémentaire.</p>
+      <p>Welcome to {{ title }}</p>
+      <h1 [innerText]="title"></h1>
+
+      <h2>Example 1</h2>
+      <button [disabled]="isDisabled">I am disabled</button>
+
+      <h2>Example 2</h2>
+      <button (click)="clickMe()">Click Me</button>
+      <p>You have clicked {{ clickCount }}</p>
+
+      <h2>Example 3</h2>
+      <input type="text" [(ngModel)]="name" />
+      <p>You have entered {{ name }}</p>
+      <button (click)="clearName()">Clear</button>
+
+      <h1>Simple Example of ngIf</h1>
+      <div class="row">
+        Show <input type="checkbox" [(ngModel)]="showMe" />
+      </div>
+      <h1>ngIf</h1>
+      <p *ngIf="showMe">ShowMe is checked</p>
+      <p *ngIf="!showMe">ShowMe is unchecked</p>
+
+      <h1>ngIf Else</h1>
+      <p *ngIf="showMe; else elseBlock1">ShowMe is checked</p>
+      <ng-template #elseBlock1>
+        <p>ShowMe is unchecked Using elseBlock</p>
+      </ng-template>
+
+      <h1>ngIf then else</h1>
+      <p *ngIf="showMe; then thenBlock2 else elseBlock2">This is not rendered</p>
+      <ng-template #thenBlock2>
+        <p>ShowMe is checked Using thenBlock</p>
+      </ng-template>
+      <ng-template #elseBlock2>
+        <p>ShowMe is unchecked Using elseBlock</p>
+      </ng-template>
+
+      <h1>using hidden</h1>
+      <p [hidden]="showMe">
+        Content to render, when the condition is true using hidden property
+        binding
+      </p>
+      <p [hidden]="!showMe">
+        Content to render, when the condition is false. using hidden property
+        binding
+      </p>
+      <a class="btn btn-primary" href="#">Aller à</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">ngSwitch Example</div>
+      <div class="card-body">
+        Input string:
+        <input type="text" [(ngModel)]="num" />
+        <div [ngSwitch]="num">
+          <div *ngSwitchCase="'1'">One</div>
+          <div *ngSwitchCase="'2'">Two</div>
+          <div *ngSwitchCase="'3'">Three</div>
+          <div *ngSwitchCase="'4'">Four</div>
+          <div *ngSwitchCase="'5'">Five</div>
+          <div *ngSwitchDefault>This is Default</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <p>Nested Array</p>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Index</th>
+              <th>Name</th>
+              <th>Mail</th>
+              <th>Skills</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let employee of employees; let i = index; let o = odd; let e = even"
+              [ngClass]="{ odd: o, even: e }"
+            >
+              <td>{{ i + 1 }}</td>
+              <td>{{ employee.name }}</td>
+              <td>{{ employee.email }}</td>
+              <td>
+                <table class="table table-sm">
+                  <tbody>
+                    <tr *ngFor="let skill of employee.skills">
+                      <td>{{ skill.skill }}</td>
+                      <td>{{ skill.exp }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
 </div>
